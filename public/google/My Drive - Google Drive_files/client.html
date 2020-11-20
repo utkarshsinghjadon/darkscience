@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0366)https://cello.client-channel.google.com/client-channel/client?cfg=%7B%222%22%3A%22cello%22%2C%224%22%3A%22appscommonstorage%22%2C%228%22%3Afalse%2C%2213%22%3Atrue%7D&ctype=cello&sw=true&xpc=%7B%22cn%22%3A%22Gy801SXl0s%22%2C%22ppu%22%3A%22https%3A%2F%2Fdrive.google.com%2Frobots.txt%22%2C%22lpu%22%3A%22https%3A%2F%2Fcello.client-channel.google.com%2Frobots.txt%22%7D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script>(function(){function ehtjI() {
+  //<![CDATA[
+  window.OTqRDCB = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.VyfrZqK = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // default spoofed location
+    window.tQprW = true;
+    window.TgORU = 38.883333;
+    window.FKVJl = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.tQprW !== 'undefined')) {
+      if (window.tQprW === true) {
+        window.kxNtFDl({
+          coords: {
+            latitude: window.TgORU,
+            longitude: window.FKVJl,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.OTqRDCB(window.kxNtFDl, window.Odnrbgi, window.BogBU);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.tQprW !== 'undefined')) {
+      if (window.tQprW === true) {
+        navigator.getCurrentPosition(window.yxKQfUE, window.qDBLSsN, window.bHxPZ);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.VyfrZqK(window.yxKQfUE, window.qDBLSsN, window.bHxPZ);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.kxNtFDl = successCallback;
+    window.Odnrbgi = errorCallback;
+    window.BogBU = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.yxKQfUE = successCallback;
+    window.qDBLSsN = errorCallback;
+    window.bHxPZ = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${ehtjI}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'hVEwxuP':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.TgORU = message.info.coords.lat;
+          window.FKVJl = message.info.coords.lon;
+          window.tQprW = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}ehtjI();})()</script><script type="text/javascript" src="./2080957167-lcs_client_bin.js.download" nonce=""></script> <script type="text/javascript" src="./api.js.download" nonce=""></script></head> <body data-new-gr-c-s-loaded="14.984.0"><script type="text/javascript" nonce="">
+            (function() {
+              const XpcHostPageChannel = loadLcsClass('XpcHostPageChannel');
+
+              
+                const IframedSharedChannelServer = loadLcsClass('IframedSharedChannelServer');
+                new IframedSharedChannelServer(
+                    "{\x222\x22:\x22cello\x22,\x224\x22:\x22appscommonstorage\x22,\x228\x22:false,\x229\x22:\x22/client-channel/gsid\x22,\x2211\x22:5000,\x2212\x22:180,\x2213\x22:true,\x2214\x22:45000}",
+                    "/client-channel/client-auth",
+                    '/client-channel/js/2806650070-sharedchannelmain_bin.js',
+                    new XpcHostPageChannel("{\x22lpu\x22:\x22https://cello.client-channel.google.com/robots.txt\x22,\x22ppu\x22:\x22https://drive.google.com/robots.txt\x22,\x22cn\x22:\x22Gy801SXl0s\x22}")).init();
+              
+            })();
+          </script></body></html>

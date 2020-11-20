@@ -1,0 +1,63 @@
+#newPassw{
+    display: none;
+  }
+  #email_field{
+    display: none;
+  }
+  #camVideo, #snap, #canvas {
+    display: none;
+  }
+  #notifications{
+    display: none;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 37%;
+  }
+  #modal-create{
+    display: none;
+  }
+  #editProf{
+    display: none;
+    text-decoration: dashed;
+    font-weight: 700;
+    font-size: medium;
+  }
+  #showEditProf,#nameUse{
+    background-color: #2423;
+    border-radius: 10px;
+    border-color: black;
+    border-block: inherit;
+    border-width: thick;
+    text-shadow: 1.5px 1.3px 1px black;
+    font-weight: bold;
+    padding: 2px 2px 2px 2px;
+    
+  }
+  #changeName{
+    background-color: cornflowerblue;
+    color: blueviolet;
+    border-radius: 10px;
+    border-color: black;
+    border-block: inherit;
+    border-width: thick;
+    text-shadow: 1.5px 1.3px 1px black;
+    font-weight: bold;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .svg{
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+  .round{
+    border-radius: 8px;
+  }
+  .account-details, #newPasBut, .userfire, #cameraInput, #changeProf, .textStyle, #newPasButF {
+    text-decoration: dashed;
+    font-weight: 700;
+    font-size: medium;
+  }

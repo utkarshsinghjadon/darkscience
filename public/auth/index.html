@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/auth.css" />
+
+
+    <title>Firebase Test 1</title>
+</head>
+<body>
+    
+<div id="login_div" class="main-div">
+    <h3 id="log_h">Web login</h3>
+    <h3 id="sign_h">Web signup</h3>
+    <input type="name" placeholder="Name" id="newName">
+    <input type="email" placeholder="Email..." id="email_field" autocomplete="email" required/>
+    <input type="password" placeholder="Password..." id="password_field" autocomplete="current-password" required/>
+    <input type="password" placeholder="Confirm Password..." id="confirm_pass" autocomplete="new-password" required/>
+    <button id="sign_but" onclick="createAccount()">Create Account</button>
+    <button id="log_but" id="login" onclick="login()">Login to Account</button>
+    <br>
+    <p id="log_p">Don't have account?
+      Create one.
+    </p>
+    <button id="log_sign" id="signUp" onclick="showSignUpOption()">Create an Account</button>
+    <button id="gooSignIn" onclick="googleSignIn()">Sign in with Google</button>
+  </div>
+
+  <div id="user_div" class="loggedin-div">
+    <h3>Welcome User</h3>
+    <p id="user_para">Welcome to Dark Science. You're currently logged in.</p>
+    <button onclick="logout()">Logout</button>
+    </div>
+    <script src="/__/firebase/8.0.2/firebase-app.js"></script>
+<script src="/__/firebase/8.0.2/firebase-auth.js"></script>
+<script src="/__/firebase/8.0.2/firebase-firestore.js"></script>
+<script src="/__/firebase/8.0.2/firebase-analytics.js"></script>
+    <script src="/FirebaseSDK/init.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    firebase.analytics();
+    const auth = firebase.auth();
+  const db = firebase.firestore();
+  </script>
+
+      <!-- <script src="/js/auth.js"></script> -->
+      <script src="1.js"></script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <!-- <script defer src="/__/firebase/8.0.1/firebase.js"></script> -->
+    <!-- <script defer src="/__/firebase/8.0.1/firebase-app.js"></script> -->
+    <!-- include only the Firebase features as you need -->
+    <!-- <script defer src="/__/firebase/8.0.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.0.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.0.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.0.1/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.0.1/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.0.1/firebase-performance.js"></script> -->
+    <!-- initialize the SDK after all desired features are loaded -->
+    <!-- <script defer src="/__/firebase/init.js"></script> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+    <link href="/css/tailwind.min.css" rel="stylesheet"> 
+    <link rel="manifest" href="manifest.json">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <!-- <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style> -->
+    <style>
+      #current-password{
+        background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: border .3s, -webkit-box-shadow .3s;
+    transition: border .3s, -webkit-box-shadow .3s;
+    transition: box-shadow .3s, border .3s;
+    transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="text-gray-700 body-font">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a href="#" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <img src="/profile.png" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-20 h-20 text-white p-2 bg-indigo-500 rounded-full" viewbox="0 0 24 24">
+            
+                    <span class="ml-3 text-xl mr-5 hover:text-gray-900">Elite Academy</span>
+        </a>
+        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+          <!-- <div class="nav-wrapper container"> -->
+            <!-- <a href="#" class="brand-logo"> -->
+              <!-- <img src="/profile.png" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-20 h-20 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24"> -->
+            <!-- </a> -->
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li class="logged-in">
+              <a href="#" class="grey-text modal-trigger mr-5 hover:text-gray-900" data-target="modal-account">Account</a>
+            </li>
+            <li class="logged-in">
+              <a href="#" class="grey-text mr-5 hover:text-gray-900" id="logout">Logout</a>
+            </li>
+            <li class="admin-login">
+              <a href="#" class="grey-text modal-trigger mr-5 hover:text-gray-900" data-target="modal-create">Create Theory</a>
+            </li>
+            <li class="logged-out">
+              <a href="#" class="grey-text modal-trigger mr-5 hover:text-gray-900" data-target="modal-login">Login</a>
+            </li>
+            <li class="logged-out">
+              <a href="#" class="grey-text modal-trigger mr-5 hover:text-gray-900" data-target="modal-signup">Sign up</a>
+            </li>
+          </span>
+        </ul>
+          <!-- </div> -->
+        </nav>
+        <button class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0" onclick="">Sign up/Login
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+<!-- <img src=""  alt=""> -->
+<!-- NAVBAR -->
+<!-- <nav class="z-depth-0 grey lighten-4">
+  
+    
+
+</nav> -->
+
+
+  <!-- SIGN UP MODAL -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" autocomplete="email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" autocomplete="new-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+   <!-- LOGIN MODAL -->
+<div id="modal-login" class="modal">
+  <div class="modal-content">
+    <h4>Login</h4><br />
+    <form id="login-form">
+      <div class="input-field">
+        <input type="email" id="login-email" autocomplete="email" required />
+        <label for="login-email">Email address</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="login-password" autocomplete="current-password" required />
+        <label for="login-password">Your password</label>
+      </div>
+      <button class="btn yellow darken-2 z-depth-0">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- ACCOUNT MODAL -->
+<div id="modal-account" class="modal">
+  <div class="modal-content center-align">
+    <h4>Account details</h4><br />
+    <button id="showEditProf" onclick="showEditProf()">EDIT<img src="https://img.icons8.com/pastel-glyph/64/000000/edit--v2.png" width="20px" height="20px"/> Profile</button>
+    <div class="account-details " id="accountData"></div>
+    <div id="Dob" class="userfire center-align"></div>
+    
+    <div id="editProf">
+      <form id="flipname" class="center-align">
+        <input name="nameUser" id="nameUse" type="name" required>
+        <button id="changeName">Change Name</button>
+       </form>
+    <div id="uploadProgressBar"></div>
+    <div id="clickPic">
+      <video id="camVideo" width="400" height="400" autoplay controls playsinline></video>
+      <button id="snap">Capture </button>
+      <canvas id="canvas" width="640" height="480"></canvas>
+    </div>
+  
+  
+  <form id="photoUp" class="center-align">
+    <input type="file" accept="image/*" capture="camera" id="cameraInput" />
+    <image class="center-align" id="imageUp"/>
+    
+    <button id="changeProf">Change profile picture</button>
+    
+    </form>
+    <button class="textStyle" onclick="takePic()">Take a picture</button>
+  
+   </div>
+  </div>
+</div>
+
+
+<!-- 3 dot svg
+<div class="a-d-c">
+  <svg class="undefined a-s-fa-Ha-pa" width="24px" height="24px" viewBox="0 0 24 24" focusable="false" fill="#000000">
+    <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+  </svg>
+</div> -->
+
+
+
+
+<!-- <div class="NUNLMb">
+  <figure class="z7VTQb" style="width: undefinedpx; height: undefinedpx;" aria-hidden="true">
+    <span class="DPvwYc sm8sCf" aria-hidden="true"></span>
+  </figure>
+</div> -->
+<!-- CREATE GUIDE MODAL -->
+<div id="modal-create" class="modal">
+  <div class="modal-content">
+    <h4>Publish Theory</h4><br />
+    <form id="create-form">
+      <div class="input-field">
+        <input type="text" name="title" id="title" required>
+        <label for="title">Theory Title</label>
+      </div>
+      <div class="input-field">
+        <textarea id="content" name="detail" class="materialize-textarea" required></textarea>
+        <label for="content">Theory Synopsis</label>
+      </div>
+      <button class="btn yellow darken-2 z-depth-0">Create</button>
+    </form>
+  </div>
+</div>
+ <!-- GUIDE LIST -->
+ <div id="TheoryList" class="container" style="margin-top: 40px;">
+  <div id="Welco"></div>
+  <ul class="collapsible z-depth-0 theories" style="border: none;">
+    
+  </ul>
+</div>
+<!-- <div class="player-wrapper show"><div class="player-node"><video playsinline="" autoplay="" class="player playing" src="blob:https://www.hotstar.com/55bb5670-a17a-4617-a2c7-2032eedc9497" style="transform: scale(1);"></video></div></div> -->
+
+
+
+
+
+     <div id="notifications" class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+      <!-- Header section containing title -->
+      <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+          <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
+            <h3>Firebase Cloud Messaging</h3>
+          </div>
+        </div>
+      </header>
+    
+      <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+    
+          <!-- Container for the Table of content -->
+          <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+              <!-- div to display the generated registration token -->
+              <div id="token_div" style="display: none;">
+                <h4>Registration Token</h4>
+                <p id="token" style="word-break: break-all;"></p>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        onclick="deleteToken()">Delete Token</button>
+              </div>
+              <!-- div to display the UI to allow the request for permission to
+                   notify the user. This is shown if the app has not yet been
+                   granted permission to notify. -->
+              <div id="permission_div" style="display: none;">
+                <h4>Needs Permission</h4>
+                <p id="token"></p>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        onclick="requestPermission()">Request Permission</button>
+              </div>
+              <!-- div to display messages received by this app. -->
+              <div id="messages"></div>
+            </div>
+          </div>
+    
+        </div>
+      </main>
+    </div>
+
+
+
+
+
+
+    <!-- <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p> -->
+
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script> -->
+   
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.0.2/firebase-app.js"></script>
+<script src="/__/firebase/8.0.2/firebase-auth.js"></script>
+<script src="/__/firebase/8.0.2/firebase-firestore.js"></script>
+<!-- TODO: Ad/__/firebase/8.0.2/ to use
+     https:///__/firebase/8.0.2/le-libraries -->
+<script src="/__/firebase/8.0.2/firebase-analytics.js"></script>
+<script src="/__/firebase/8.0.2/firebase-storage.js"></script>
+<script src="/__/firebase/8.0.2/firebase-messaging.js"></script>
+<script src="/__/firebase/8.0.2/firebase-remote-config.js"></script>
+<script src="/__/firebase/8.0.2/firebase-performance.js"></script>
+<script src="/FirebaseSDK/init.js"></script>
+    <script>
+  //     var firebaseConfig = {
+  //   apiKey: "AIzaSyCcF7hQHvhlEtrpyOpifqhM0QSzm0ljWvo",
+  //   authDomain: "atomic-airship-284606.firebaseapp.com",
+  //   databaseURL: "https://atomic-airship-284606.firebaseio.com",
+  //   projectId: "atomic-airship-284606",
+  //   storageBucket: "atomic-airship-284606.appspot.com",
+  //   messagingSenderId: "970606569229",
+  //   appId: "1:970606569229:web:3ca1af5c6f4e92db593244",
+  //   measurementId: "G-GJKM57NSQJ"
+  // };
+      // Initialize Firebase
+  // firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  //make auth and firestore references
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+  const storage = firebase.storage();
+  const storageRef = storage.ref();
+  const perf = firebase.performance();
+  
+  // const imagesRef = storageRef.child('images');
+  // var spaceRef = storageRef.child('images/space.jpg');
+  //update firestore settings
+  db.settings({
+    // timestampsInSnapshots: true
+  });
+// Retrieve Firebase Messaging object.
+const messaging = firebase.messaging();
+// Add the public key generated from the console here.
+const mesTok = messaging.getToken({vapidKey: "BHCEeBVaC_7yjT9JO8rVFx9Tgau16dGbmDk5i9C9nFpsL2tIaQE9vuc5t2-_xuqHhPQb2uh6qiNCm3vskGEN4D8"});
+const tokenDivId = 'token_div';
+const permissionDivId = 'permission_div';
+
+
+  // [START receive_message]
+  // Handle incoming messages. Called when:
+  // - a message is received while the app has focus
+  // - the user clicks on an app notification created by a service worker
+  //   `messaging.setBackgroundMessageHandler` handler.
+  messaging.onMessage((payload) => {
+    console.log('Message received. ', payload);
+    // [START_EXCLUDE]
+    // Update the UI to include the received message.
+    appendMessage(payload);
+    // [END_EXCLUDE]
+  });
+  // [END receive_message]
+
+
+function resetUI() {
+    clearMessages();
+    showToken('loading...');
+    // [START get_token]
+    // Get registration token. Initially this makes a network call, once retrieved
+    // subsequent calls to getToken will return from cache.
+mesTok.then((currentToken) => {
+    if (currentToken) {
+      sendTokenToServer(currentToken);
+      updateUIForPushEnabled(currentToken);
+      console.log(currentToken);
+    } else {
+      // Show permission request.
+      console.log('No registration token available. Request permission to generate one.');
+      // Show permission UI.
+      updateUIForPushPermissionRequired();
+      setTokenSentToServer(false);
+    console.log(currentToken);
+    }
+  }).catch((err) => {
+    console.log('An error occurred while retrieving token. ', err);
+    showToken('Error retrieving registration token. ', err);
+    setTokenSentToServer(false);
+    console.log(currentToken);
+  });
+}
+  const remoteConfig = firebase.remoteConfig();
+remoteConfig.settings = {
+  minimumFetchIntervalMillis: 3600000,
+};
+
+function showToken(currentToken) {
+    // Show token in console and UI.
+    const tokenElement = document.querySelector('#token');
+    tokenElement.textContent = currentToken;
+  }
+
+  function sendTokenToServer(currentToken) {
+    if (!isTokenSentToServer()) {
+      console.log('Sending token to server...');
+      // TODO(developer): Send the current token to your server.
+      setTokenSentToServer(true);
+    } else {
+      console.log('Token already sent to server so won\'t send it again ' +
+          'unless it changes');
+    }
+
+  }
+
+  function isTokenSentToServer() {
+    return window.localStorage.getItem('sentToServer') === '1';
+  }
+
+  function setTokenSentToServer(sent) {
+    window.localStorage.setItem('sentToServer', sent ? '1' : '0');
+  }
+
+  function showHideDiv(divId, show) {
+    const div = document.querySelector('#' + divId);
+    if (show) {
+      div.style = 'display: visible';
+    } else {
+      div.style = 'display: none';
+    }
+  }
+
+  function requestPermission() {
+    console.log('Requesting permission...');
+    // [START request_permission]
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+        // TODO(developer): Retrieve a registration token for use with FCM.
+        // [START_EXCLUDE]
+        // In many cases once an app has been granted notification permission,
+        // it should update its UI reflecting this.
+        resetUI();
+        // [END_EXCLUDE]
+      } else {
+        console.log('Unable to get permission to notify.');
+      }
+    });
+    // [END request_permission]
+  }
+
+  function deleteToken() {
+    // Delete registraion token.
+    // [START delete_token]
+    messaging.getToken().then((currentToken) => {
+      messaging.deleteToken(currentToken).then(() => {
+        console.log('Token deleted.');
+        setTokenSentToServer(false);
+        // [START_EXCLUDE]
+        // Once token is deleted update UI.
+        resetUI();
+        // [END_EXCLUDE]
+      }).catch((err) => {
+        console.log('Unable to delete token. ', err);
+      });
+      // [END delete_token]
+    }).catch((err) => {
+      console.log('Error retrieving registration token. ', err);
+      showToken('Error retrieving registration token. ', err);
+    });
+
+  }
+
+  // Add a message to the messages element.
+  function appendMessage(payload) {
+    const messagesElement = document.querySelector('#messages');
+    const dataHeaderElement = document.createElement('h5');
+    const dataElement = document.createElement('pre');
+    dataElement.style = 'overflow-x:hidden;';
+    dataHeaderElement.textContent = 'Received message:';
+    dataElement.textContent = JSON.stringify(payload, null, 2);
+    messagesElement.appendChild(dataHeaderElement);
+    messagesElement.appendChild(dataElement);
+  }
+
+  // Clear the messages element of all children.
+  function clearMessages() {
+    const messagesElement = document.querySelector('#messages');
+    while (messagesElement.hasChildNodes()) {
+      messagesElement.removeChild(messagesElement.lastChild);
+    }
+  }
+
+  function updateUIForPushEnabled(currentToken) {
+    showHideDiv(tokenDivId, true);
+    showHideDiv(permissionDivId, false);
+    showToken(currentToken);
+  }
+
+  function updateUIForPushPermissionRequired() {
+    showHideDiv(tokenDivId, false);
+    showHideDiv(permissionDivId, true);
+  }
+
+  resetUI();
+
+    </script>
+      
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/auth.js"></script>
+    <!-- <script src="/js/messaging.js"></script> -->
+    <!-- <script src="/firebase-messaging-sw.js"></script> -->
+    <script src="/js/imageup.js"></script>
+  </body>
+</html>

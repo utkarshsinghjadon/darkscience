@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/auth.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <style>
+      #video {
+  border: 1px solid #999;
+  width: 98%;
+  max-width: 860px;
+  background-color: #ddd;
+  border-radius: 7px;
+  margin: 10px 0px 0px 10px;
+  /* width: 320px; */
+  /* height: 440px; */
+
+}
+
+.error {
+  color: red;
+}
+
+.warn {
+  color: orange;
+}
+
+.info {
+  color: darkgreen;
+}
+
+button {
+ margin: 5px 0px 0px 10px !important;
+ width: 654px;
+}
+    </style>
+</head>
+
+
+
+<body onload="showMyFace()">
+
+
+
+    <p>
+      This example shows you the contents of the selected part of your display.
+      Click the Start Capture button to begin.
+    </p>
+    <p>
+      <button id="start">Start Capture</button>
+      <button id="stop">Stop Capture</button>
+    </p>
+
+    <video id="video" autoplay></video>
+    <video id="yourVideo" autoplay muted></video>
+    <video id="friendsVideo" autoplay></video>
+    <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg">
+      <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Call
+    </button>
+ 
+    <br>
+    <strong>Log:</strong>
+    <br>
+    <pre id="log"></pre>
+
+
+
+
+
+
+
+        <script src="/__/firebase/8.0.2/firebase-app.js"></script>
+    <script src="/__/firebase/8.0.2/firebase-auth.js"></script>
+    <script src="/__/firebase/8.0.2/firebase-firestore.js"></script>
+    <script src="/__/firebase/8.0.2/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.0.2/firebase-database.js"></script>
+        <script src="/FirebaseSDK/init.js"></script>
+      <script>
+        // Your web app's Firebase configuration
+        // firebase.analytics();
+        const auth = firebase.auth();
+      const db = firebase.firestore();
+      
+
+      </script>
+    
+          <!-- <script src="/js/auth.js"></script> -->
+          <script src="index.js"></script>
+          <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+    
+</body>
+</html>
